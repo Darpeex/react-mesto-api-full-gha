@@ -1,4 +1,5 @@
 // • функция register - принимает почту и пароль, отправляет запрос регистрации на /signup
+import Cookies from 'js-cookie'; // зависимость для взаимодействия с cookie
 // export const BASE_URL = 'https://auth.nomoreparties.co';
 // export const BASE_URL = 'mongodb://localhost:27017/mestodb';
 export const BASE_URL = 'https://api.darpeex.nomoredomainsicu.ru';
@@ -55,5 +56,8 @@ export const checkToken = ( jwt ) => {
     }
   })
   .then(handleResponse)
-  .then(data => data)
+  .then((data) => {
+    Cookies.set("jwt", jwt, { expires: 7 }); // Сохранение токена в cookie 
+    return data;
+  });
 } 
