@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie'; // библиотека для работы с cookie
+
 // Класс взаимодействия с сервером
 class Api {
   #url;
@@ -5,7 +7,10 @@ class Api {
 
   constructor(data) {
     this.#url = data.url; // ссылка на сервер
-    this.#headers = data.headers; // данные headers из index.js для запроса
+    this.#headers = {
+      ...data.headers,
+      authorization: `Bearer ${Cookies.get('auth_token')}`,
+    };
   }
 
   // Проверка статуса запроса
@@ -112,18 +117,6 @@ export default Api;
 export const api = new Api ({
   url: 'https://api.darpeex.nomoredomainsicu.ru/main',
   headers: {
-    authorization: '36b3d00c-eb9b-4532-a563-964663cc5274',
     'Content-Type': 'application/json'
   }
 })
-
-
-
-// Можно сделать универсальный метод запроса с проверкой ответа, чтобы не дублировать эту проверку в каждом запросе:
-
-// _request(url, options) {
-//   return fetch(url, options).then(this.#handleResponse)
-// }
-
-// И теперь просто нужно заменить все fetch на this._request, убрав дублирование проверки на ok. Все остальное будет без изменений 
-// И даже можно поместить внутрь this._baseUrl, чтобы не дублировать его в каждом запросе. Тогда нужно будет передавать просто endpoint в вызов
