@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 51.250.74.5
 
-Frontend https://...
+Frontend https://darpeex.nomoredomainsicu.ru/
 
-Backend https://...
+Backend https://api.darpeex.nomoredomainsicu.ru/
