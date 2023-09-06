@@ -81,7 +81,7 @@ function App() {
       setCurrentUser(userInfo); // Установка данных пользователя с сервера в стейт
     })
     .catch((err) => console.log(`Ошибка: ${err}`));
-  }, []);
+  }, [loggedIn]);
 
 // Обновление данных пользователя на сервере
   function handleUpdateUser({ name, description }) { // данные берутся из инпутов после отправки формы (submit)
@@ -108,7 +108,7 @@ function App() {
       setCards(userInfo); // обновляем стейт карточек
     })
     .catch((err) => console.log(`Ошибка: ${err}`));
-  }, []);
+  }, [loggedIn]);
 
   // Функции, меняющие состояния попапов (true - открыт, false - закрыт)
   const handleEditAvatarClick = () => {
