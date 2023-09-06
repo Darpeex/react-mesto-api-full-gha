@@ -16,6 +16,7 @@ import { AddPlacePopup } from './AddPlacePopup';
 import { CurrentUserContext } from '../context/CurrentUserContext';
 import { CardsContext } from '../context/CardsContext';
 import * as auth from '../utils/Auth';
+import Cookies from 'js-cookie'; // Импорт Cookies
 import '../index.css'; // Файлы со стилями
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
       };
   }, [isAnyPopupOpened]);
 
-  const jwt = localStorage.getItem('jwt');
+  const jwt = Cookies.get('jwt'); // Изменение localStorage на Cookies
   const tokenCheck = () => { // если у пользователя есть токен в localStorage, эта функция проверит валидность токена
     if (jwt){
       auth.checkToken(jwt).then((res) => { // проверим токен
