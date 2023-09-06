@@ -77,11 +77,13 @@ function App() {
 
 // Получение данных пользователя с сервера
   useEffect(() => {
-    api.getUserInfo() // Запрос данных пользователя с сервера
-    .then((userInfo) => {
-      setCurrentUser(userInfo); // Установка данных пользователя с сервера в стейт
-    })
-    .catch((err) => console.log(`Ошибка: ${err}`));
+    if (loggedIn) {
+      api.getUserInfo() // Запрос данных пользователя с сервера
+      .then((userInfo) => {
+        setCurrentUser(userInfo); // Установка данных пользователя с сервера в стейт
+      })
+      .catch((err) => console.log(`Ошибка: ${err}`));
+    }
   }, [loggedIn]);
 
 // Обновление данных пользователя на сервере
@@ -104,11 +106,13 @@ function App() {
 
 // Получение данных карточек с сервера
   useEffect(() => {
-    api.getInitialCards() // получаем карточки с сервера
-    .then((userInfo) => {
-      setCards(userInfo); // обновляем стейт карточек
-    })
-    .catch((err) => console.log(`Ошибка: ${err}`));
+    if (loggedIn) {
+      api.getInitialCards() // получаем карточки с сервера
+      .then((userInfo) => {
+        setCards(userInfo); // обновляем стейт карточек
+      })
+      .catch((err) => console.log(`Ошибка: ${err}`));
+    }
   }, [loggedIn]);
 
   // Функции, меняющие состояния попапов (true - открыт, false - закрыт)
