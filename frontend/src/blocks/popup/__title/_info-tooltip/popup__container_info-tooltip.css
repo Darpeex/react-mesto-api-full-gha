@@ -1,0 +1,18 @@
+.popup__container_info-tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+}
+
+.popup__container_info-tooltip h2 {
+  padding: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.popup__container_info-tooltip img {
+  margin: 0 0 32px 0;
+  width: 120px;
+  height: 120px;
+}

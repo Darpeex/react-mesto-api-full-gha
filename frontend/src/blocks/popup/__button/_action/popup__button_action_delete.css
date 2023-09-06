@@ -1,0 +1,38 @@
+.popup__button_action_delete {
+  background-color: black;
+  width: 100%;
+  padding: 0;
+  min-height: 50px;
+  border-radius: 2px;
+  box-sizing: border-box;
+
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(22 / 18);
+  text-align: center;
+}
+
+.popup__button_action_delete:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.popup__button_action_delete:disabled {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: #e9e9e9;
+  border: solid 1px rgba(0, 0, 0, .2);
+  cursor: default;
+}
+
+@media screen and (max-width: 599px) {
+  .popup__button_action_delete {
+    min-height: 46px;
+    font-size: 14px;
+    line-height: calc(17 / 14);
+  }
+}
+
+/* Теперь понимаю, что можно писать код иначе, а то у меня 5 кнопок, практически с одинаковыми свойствами
+P.S. если не критично (ранее допускали), я бы потом пофиксил, а то сдать боюсь не успею */

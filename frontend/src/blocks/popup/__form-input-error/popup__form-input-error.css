@@ -1,0 +1,25 @@
+.popup__form-input-error {
+  margin: 0;
+  padding: 5px 0 0;
+  margin-bottom: 8px;
+  display: block;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+ /* min-height: 15px; /* так по pixelPerfect от Figma*/
+  min-height: 28px; /* так по видео-примеру */
+  color: #FF0000;
+  cursor: default;
+}
+
+.popup__form-input-error:last-of-type {
+  margin-bottom: 28px;
+  /* margin-bottom: 15px; по новому макету так получается, но кажется не логичным т.к. нужно место для поля с ошибками. Выше даже есть уже комментарии */
+}
+
+@media screen and (max-width: 599px) {
+  .popup__form-input-error:last-of-type {
+  margin-bottom: 42px;
+  }
+}

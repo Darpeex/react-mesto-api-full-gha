@@ -1,0 +1,19 @@
+.page {
+  margin: 0 auto;
+  color: white;
+  min-width: 320px;
+  background-color: #000;
+  font-family: 'Inter', Arial, sans-serif;
+
+  min-height: 100vh; /* Для липкого футера */
+  display: flex; /* Для липкого футера */
+  flex-direction: column; /* Для липкого футера */
+  /* Пытался, но в normalize.css нельзя вносить изменения - тесты отклоняют */
+  
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}

@@ -1,0 +1,11 @@
+.popup__image-desription {
+  position: relative;
+  box-sizing: border-box;
+  margin: 90px auto auto;
+}
+
+@media screen and (max-width: 599px) {
+  .popup__image-desription {
+    margin: 136px auto auto;
+  }
+}

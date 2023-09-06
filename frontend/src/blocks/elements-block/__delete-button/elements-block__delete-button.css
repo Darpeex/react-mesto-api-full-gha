@@ -1,0 +1,20 @@
+.elements-block__delete-button {
+  padding: 0;
+  position: absolute;
+  background: url(../../../images/dustbin.svg) no-repeat;
+  border: none;
+  width: 18px;
+  height: 19px;
+  right: 20px;
+  top: 20px;
+}
+
+.elements-block__delete-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.elements-block__delete-button:active {
+  background: url(../../../images/dustbin.svg) no-repeat;
+  opacity: 1;
+}

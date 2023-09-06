@@ -1,0 +1,16 @@
+.profile__avatar-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: url(../../../images/pencil.svg) rgba(0, 0, 0, 0.8) no-repeat center;
+  transition: opacity .2s;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.profile__avatar-button:hover {
+  opacity: 1;
+}

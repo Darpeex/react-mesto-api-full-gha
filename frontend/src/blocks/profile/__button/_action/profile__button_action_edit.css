@@ -1,0 +1,22 @@
+.profile__button_action_edit {
+  background: url(../../../../images/edit-button.svg) no-repeat;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  grid-area: editButton;
+}
+
+.profile__button_action_edit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__button_action_edit {
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+  }
+}

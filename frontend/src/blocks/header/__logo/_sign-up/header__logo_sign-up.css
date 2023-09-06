@@ -1,0 +1,16 @@
+.header__logo_sign-up {
+  padding-top: 6px;
+  color: white;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 122.222% */
+  text-decoration: none;
+  align-self: start; /* Активная область нажатия на ссылку подгоняется под высоту текста */
+}
+
+.header__logo_sign-up:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

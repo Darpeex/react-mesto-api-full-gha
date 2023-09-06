@@ -1,0 +1,9 @@
+.popup__title_padding-less {
+  padding-bottom: 32px;
+}
+
+/* @media screen and (max-width: 599px) {
+  .popup__title_padding-less {
+    padding-bottom: 50px;
+  }
+} Мне и 35px нравиться, если можно*/

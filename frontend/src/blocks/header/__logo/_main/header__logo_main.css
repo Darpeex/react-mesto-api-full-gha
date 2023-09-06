@@ -1,0 +1,24 @@
+.header__logo_main {
+  display: flex;
+  flex-direction: row;
+  padding-top: 6px;
+  color: white;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 22px; /* 122.222% */
+  align-self: start; /* Активная область нажатия на ссылку подгоняется под высоту текста */
+}
+.header__logo_main p {
+  font-weight: 500;
+  margin: 0 24px 0 0;
+}
+.header__logo_main a {
+  color: #A9A9A9;
+  font-weight: 400;
+  text-decoration: none;
+}
+.header__logo_main a:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

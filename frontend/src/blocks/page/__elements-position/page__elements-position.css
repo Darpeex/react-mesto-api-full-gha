@@ -1,0 +1,16 @@
+.page__elements-position {
+  padding-top: 50px;
+  padding-bottom: 67px;
+}
+
+@media screen and (max-width: 849px) {
+  .page__elements-position {
+    padding-top: 36px;
+    padding-bottom: 55px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .page__elements-position {
+    padding-bottom: 48px;
+  }
+}

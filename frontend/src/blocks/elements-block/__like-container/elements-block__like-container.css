@@ -1,0 +1,9 @@
+.elements-block__like-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  min-width: 22px;
+  height: 35px;
+  flex-shrink: 0; /* Не дает сжиматься при длинном текста */
+}
