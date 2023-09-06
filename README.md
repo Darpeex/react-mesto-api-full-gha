@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.74.5
+IP 51.250.74.5
 
 Frontend https://darpeex.nomoredomainsicu.ru/
 
