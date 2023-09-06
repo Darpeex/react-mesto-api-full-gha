@@ -15,7 +15,7 @@ router.use((req, res, next) => {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header('Access-Control-Allow-Origin', origin);
   }
-  const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
+  const { method } = req.method; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
   // сохраняем список заголовков исходного запроса
   const requestHeaders = req.headers['access-control-request-headers'];
   if (method === 'OPTIONS') {

@@ -109,13 +109,6 @@ class Api {
 export default Api;
 
 // Класс Api, отвечающий за запросы к серверу
-// export const api = new Api ({
-//   url: 'https://mesto.nomoreparties.co/v1/cohort-66',
-//   headers: {
-//     authorization: '36b3d00c-eb9b-4532-a563-964663cc5274',
-//     'Content-Type': 'application/json'
-//   }
-// })
 export const api = new Api ({
   url: 'https://api.darpeex.nomoredomainsicu.ru/main',
   headers: {
