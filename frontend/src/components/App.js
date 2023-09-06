@@ -166,7 +166,7 @@ function App() {
 
 // Удаляем токен из браузерного хранилища  
   function handleDeleteTocken() {
-    localStorage.removeItem('jwt');
+    Cookies.remove('jwt');
     setLoggedIn(false);
     setUserData({});    
   }

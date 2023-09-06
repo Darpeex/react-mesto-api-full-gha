@@ -26,7 +26,7 @@ export const register = ( password, email ) => {
   .then((res) => res);
 };
 
-// • функция login - принимает почту и пароль, отправляет запрос авторизации на /signin . В ответ сервер вернет jwt, который нужно сохранить в localStorage
+// • функция login - принимает почту и пароль, отправляет запрос авторизации на /signin . В ответ сервер вернет jwt, который нужно сохранить в Cookie
 export const login = ( password, email ) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
@@ -39,7 +39,7 @@ export const login = ( password, email ) => {
   .then(handleResponse)
   .then((data) => {
     if (data.token){
-      localStorage.setItem('jwt', data.token);
+      Cookies.set('jwt', data.token, { expires: 7 });
     }
       return data;
   })
