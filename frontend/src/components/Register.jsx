@@ -26,7 +26,7 @@ export const Register = ({ onInfoTooltip, onResult, errorMessage }) => {
       navigate('/sign-in', {replace: true});
     }).catch((err) => {
       onResult(false)
-      errorMessage('Ошибка, возможно почта зарегистрированна')
+      errorMessage('Вероятно, почта уже зарегистрированна')
     })
     .finally(onInfoTooltip)
   }
