@@ -22,7 +22,8 @@ export const register = ( password, email ) => {
     body: JSON.stringify({ password, email })
   })
   .then(handleResponse)
-  .then((res) => res);
+  .then((res) => res)
+  .catch((err) => console.log(`message: ${err.message}`))
 };
 
 // • функция login - принимает почту и пароль, отправляет запрос авторизации на /signin . В ответ сервер вернет jwt, который нужно сохранить в Cookie
@@ -30,6 +31,7 @@ export const login = ( password, email ) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     credentials: 'include', // теперь куки посылаются вместе с запросом
