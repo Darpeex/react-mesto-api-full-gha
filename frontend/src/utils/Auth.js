@@ -14,6 +14,7 @@ export const BASE_URL = 'https://api.darpeex.nomoredomainsicu.ru';
 export const register = ( password, email ) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
+    mode: 'cors', // явно указываем использование CORS
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
