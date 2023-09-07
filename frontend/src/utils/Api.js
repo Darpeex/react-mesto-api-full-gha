@@ -9,6 +9,7 @@ class Api {
     this.#url = data.url; // ссылка на сервер
     this.#headers = {
       ...data.headers,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       authorization: `Bearer ${Cookies.get('auth_token')}`,
     };
   }
