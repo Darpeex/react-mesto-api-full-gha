@@ -30,4 +30,4 @@ router.use((req, res, next) => {
   next();
 });
 
-module.exports = router;
+module.exports = router; // передумал использовать из-за сложностей, оставил для примера

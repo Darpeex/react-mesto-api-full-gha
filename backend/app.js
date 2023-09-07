@@ -5,12 +5,10 @@ const mongoose = require('mongoose'); // модуль для работы с б�
 const { errors } = require('celebrate'); // мидлвэр для ошибок валидации полей
 require('dotenv').config(); // модуль для получения данных из файла .env
 const cookieParser = require('cookie-parser'); // модуль чтения cookie
+const cors = require('cors');
 
 // логгер
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
-// CORS - для доступа к серверу с других доменов
-const cors = require('./middlewares/cors');
 
 // контроллеры для создания пользователя, аутентификации и авторизации
 const { createUser, login } = require('./controllers/users');
@@ -32,7 +30,14 @@ const errorHandler = require('./middlewares/error-handler');
 
 const app = express(); // cоздаём объект приложения
 
-app.use(cors); // доступ для других доменов
+const corsOptions = {
+  origin: 'http://localhost:3001', // источник домена
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', // заголовок Authorization
+  credentials: true, // обмен учетными данными (cookies)
+};
+
+app.use(cors(corsOptions)); // доступ для других доменов
 
 app.use(cookieParser()); // парсер для чтения cookie
 
