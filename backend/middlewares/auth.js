@@ -8,6 +8,10 @@ const AuthorizationError = require('../errors/auth-err');
 
 module.exports = (req, res, next) => {
   const authorization = req.headers.cookie; // из ответа получаем токен
+  console.log(`req.cookie: ${req.cookies}`);
+  console.log(`req.headers: ${req.headers}`);
+  console.log(`req.cookie.jwt: ${req.cookies.jwt}`);
+  console.log(`req.headers.cookie: ${req.headers.cookie}`);
   // проверяем есть ли он или начинается ли с jwt= (тип токена аутентификации)
   if (!authorization || !authorization.startsWith('jwt=')) {
     throw new AuthorizationError('Не получен токен из ответа');

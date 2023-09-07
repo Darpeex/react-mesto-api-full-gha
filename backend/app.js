@@ -4,6 +4,7 @@ const express = require('express'); // фреймворк для создани�
 const mongoose = require('mongoose'); // модуль для работы с базой данных MongoDB
 const { errors } = require('celebrate'); // мидлвэр для ошибок валидации полей
 require('dotenv').config(); // модуль для получения данных из файла .env
+const cookieParser = require('cookie-parser'); // модуль чтения cookie
 
 // логгер
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -30,6 +31,8 @@ const NotFoundError = require('./errors/not-found-err'); // 404
 const errorHandler = require('./middlewares/error-handler');
 
 const app = express(); // cоздаём объект приложения
+
+app.use(cookieParser()); // парсер для чтения cookie
 
 app.use(cors); // доступ для других доменов
 
