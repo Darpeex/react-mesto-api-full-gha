@@ -23,7 +23,6 @@ export const register = ( password, email ) => {
   })
   .then(handleResponse)
   .then((res) => res)
-  .catch((err) => console.log(`message: ${err.message}`))
 };
 
 // • функция login - принимает почту и пароль, отправляет запрос авторизации на /signin . В ответ сервер вернет jwt, который нужно сохранить в Cookie
