@@ -31,7 +31,8 @@ const errorHandler = require('./middlewares/error-handler');
 const app = express(); // cоздаём объект приложения
 
 const corsOptions = {
-  origin: 'https://darpeex.nomoredomainsicu.ru/sign-up', // источник домена
+  // origin: 'http://localhost:3001', // источник домена
+  origin: 'https://darpeex.nomoredomainsicu.ru', // источник домена
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', // заголовок Authorization
   credentials: true, // обмен учетными данными (cookies)
