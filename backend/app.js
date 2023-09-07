@@ -5,12 +5,13 @@ const mongoose = require('mongoose'); // модуль для работы с б�
 const { errors } = require('celebrate'); // мидлвэр для ошибок валидации полей
 require('dotenv').config(); // модуль для получения данных из файла .env
 const cookieParser = require('cookie-parser'); // модуль чтения cookie
+const cors = require('cors'); // библиотека для настройки CORS +++++++++++++++++++++++++++++
 
 // логгер
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 // CORS - для доступа к серверу с других доменов
-const cors = require('./middlewares/cors');
+// const cors = require('./middlewares/cors'); -------------------------------------
 
 // контроллеры для создания пользователя, аутентификации и авторизации
 const { createUser, login } = require('./controllers/users');
@@ -32,9 +33,17 @@ const errorHandler = require('./middlewares/error-handler');
 
 const app = express(); // cоздаём объект приложения
 
-app.use(cookieParser()); // парсер для чтения cookie
+const corsOptions = {
+  origin: 'https://darpeex.nomoredomainsicu.ru', // текущий домен ++++++++++++++++++++++++
+  credentials: true, // разрешение на передачу куки ++++++++++++++++++++++++++
+  optionsSuccessStatus: 200, // старые браузеры не поддерживают статус 204 в качестве ответа ++++++
+};
 
-app.use(cors); // доступ для других доменов
+app.use(cors(corsOptions)); // +++++++++++++++
+
+// app.use(cors); // доступ для других доменов -----------------------------
+
+app.use(cookieParser()); // парсер для чтения cookie
 
 const { // для успешного прохождения тестов gitHub
   PORT = 3000,

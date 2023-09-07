@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return */ // ругается на стрелочную функцию
+/* eslint-disable consistent-return */ // зачем-то ругается на стрелочную функцию
 const router = require('express').Router(); // создание нового экземпляра маршрутизатора вместо app
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
