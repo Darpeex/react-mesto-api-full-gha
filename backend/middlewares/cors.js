@@ -17,14 +17,14 @@ router.use((req, res, next) => {
     // устанавливаем заголовок Access-Control-Allow-Credentials с значением true
     res.header('Access-Control-Allow-Credentials', 'true');
   }
-  const { method } = req.method; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
+  const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
   // сохраняем список заголовков исходного запроса
   const requestHeaders = req.headers['access-control-request-headers'];
   if (method === 'OPTIONS') {
     // разрешаем кросс-доменные запросы с этими заголовками
     res.header('Access-Control-Allow-Headers', requestHeaders);
     // завершаем обработку запроса и возвращаем результат клиенту
-    return res.end();
+    return res.end(); // end() потому что тела ответа нет
   }
   next();
 });
