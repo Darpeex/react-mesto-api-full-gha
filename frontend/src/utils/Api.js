@@ -9,7 +9,6 @@ class Api {
     this.#url = data.url; // ссылка на сервер
     this.#headers = {
       ...data.headers,
-      credentials: 'include', // теперь куки посылаются вместе с запросом
       authorization: `Bearer ${Cookies.get('auth_token')}`,
     };
   }
@@ -26,7 +25,8 @@ class Api {
   // Загрузка информации о пользователе с сервера
   getUserInfo() {
     return fetch(`${this.#url}/users/me`, {
-      headers: this.#headers
+      headers: this.#headers,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
     })
     .then(this.#handleResponse)
   }
@@ -34,7 +34,8 @@ class Api {
   // Запрос карточек с сервера
   getInitialCards() {
     return fetch(`${this.#url}/cards`, {
-      headers: this.#headers
+      headers: this.#headers,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
     })
     .then(this.#handleResponse)
   }
@@ -44,6 +45,7 @@ class Api {
     return fetch(`${this.#url}/users/me`, {
       method: 'PATCH',
       headers: this.#headers,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       body: JSON.stringify({
         name: name, // имя
         about: description // о себе
@@ -57,6 +59,7 @@ class Api {
     return fetch(`${this.#url}/cards`, {
       method: 'POST',
       headers: this.#headers,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       body: JSON.stringify(data) // name: data.name, link: data.link
     })
     .then(this.#handleResponse)
@@ -66,6 +69,7 @@ class Api {
   deleteCard(id) {
     return fetch(`${this.#url}/cards/${id}`, {
       method: 'DELETE',
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       headers: this.#headers
     })
     .then(this.#handleResponse)
@@ -75,7 +79,8 @@ class Api {
   addCardLike(id) {
     return fetch(`${this.#url}/cards/${id}/likes`, {
       method: 'PUT',
-      headers: this.#headers
+      headers: this.#headers,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
     })
     .then(this.#handleResponse)
   }
@@ -84,7 +89,8 @@ class Api {
   removeCardLike(id) {
     return fetch(`${this.#url}/cards/${id}/likes`, {
       method: 'DELETE',
-      headers: this.#headers
+      headers: this.#headers,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
     })
     .then(this.#handleResponse)
   }
@@ -94,6 +100,7 @@ class Api {
     return fetch(`${this.#url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.#headers,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
       body: JSON.stringify({
         avatar: data.avatar,
       })
@@ -107,6 +114,7 @@ class Api {
       return fetch(`${this.#url}/cards/${id}/likes`, {
         method: method,
         headers: this.#headers,
+        credentials: 'include', // теперь куки посылаются вместе с запросом
       })
       .then(this.#handleResponse)
   }

@@ -16,11 +16,11 @@ export const BASE_URL = 'https://api.darpeex.nomoredomainsicu.ru';
 export const register = ( password, email ) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
-    credentials: 'include', // теперь куки посылаются вместе с запросом
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
+    credentials: 'include', // теперь куки посылаются вместе с запросом
     body: JSON.stringify({ password, email })
   })
   .then(handleResponse)
@@ -31,11 +31,11 @@ export const register = ( password, email ) => {
 export const login = ( password, email ) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
-    credentials: 'include', // теперь куки посылаются вместе с запросом
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
+    credentials: 'include', // теперь куки посылаются вместе с запросом
     body: JSON.stringify({ password, email })
   })
   .then(handleResponse)
@@ -51,12 +51,12 @@ export const login = ( password, email ) => {
 export const checkToken = ( jwt ) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
-    credentials: 'include', // теперь куки посылаются вместе с запросом
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       "Authorization" : `Bearer ${jwt}`
-    }
+    },
+    credentials: 'include', // теперь куки посылаются вместе с запросом
   })
   .then(handleResponse)
   .then((data) => {
