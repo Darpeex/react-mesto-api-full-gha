@@ -54,26 +54,23 @@ function App() {
       };
   }, [isAnyPopupOpened]);
 
-  const jwt = Cookies.get('jwt'); // Изменение localStorage на Cookies
   const tokenCheck = () => { // если у пользователя есть токен в localStorage, эта функция проверит валидность токена
-    if (jwt){
-      auth.checkToken(jwt).then((res) => { // проверим токен
+      auth.checkToken().then((res) => { // проверим токен - комменты поправлю, понять бы как правильно
         if (res){
           const userData = { // здесь можем получить данные пользователя!
-            email: res.data.email
+            email: res.email
           }
           setLoggedIn(true); // авторизуем пользователя
           setUserData(userData)
           navigate("/main", {replace: true})
         }
       }).catch((err) => console.log(`Ошибка: ${err}`)); 
-    }
   }
 
 // Проверка наличия токена у пользователя
   useEffect(() => {
     tokenCheck();
-  }, [jwt])
+  }, [])
 
 // Получение данных пользователя с сервера
   useEffect(() => {
@@ -145,18 +142,18 @@ function App() {
   }
   // Поддержка лайков и дизлайков
   function handleCardLike(card) {
-    const isLiked = card.likes.some(like => like._id === currentUser._id); // Снова проверяем, есть ли уже лайк на этой карточке
+    const isLiked = card.likes.some(likerId => likerId === currentUser._id); // Снова проверяем, есть ли уже лайк на этой карточке
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => { // Отправляем запрос в API и получаем обновлённые данные карточки
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-    })    
-    .catch((err) => console.log(`Ошибка: ${err}`)); 
-  } 
+    })
+    .catch((err) => console.log(`Ошибка: ${err}`));
+  }
 // Удаление карточки
   function handleCardDelete(card) {
     api.deleteCard(card._id).then(() => {
       setCards((state) => state.filter((c) => c._id !== card._id ));
     })
-    .catch((err) => console.log(`Ошибка: ${err}`)); 
+    .catch((err) => console.log(`Ошибка: ${err}`));
   }
 // Добавление карточки
   function handleAddPlaceSubmit({ name, link }) {

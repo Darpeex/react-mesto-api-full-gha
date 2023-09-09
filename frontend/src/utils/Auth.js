@@ -47,19 +47,20 @@ export const login = ( password, email ) => {
 };
 
 // • функция checkToken - принимает jwt, отправляет запрос на /users/me и возвращает данные пользователя
-export const checkToken = ( jwt ) => {
+// export const checkToken = ( jwt ) => {
+  export const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization' : `Bearer ${jwt}`,
+      // 'Authorization' : jwt,
     },
     credentials: 'include', // теперь куки посылаются вместе с запросом
   })
   .then(handleResponse)
   .then((data) => {
-    Cookies.set("jwt", jwt, { expires: 7 }); // Сохранение токена в cookie 
+    // Cookies.set("jwt", jwt, { expires: 7 }); // Сохранение токена в cookie 
     return data;
   });
 } 

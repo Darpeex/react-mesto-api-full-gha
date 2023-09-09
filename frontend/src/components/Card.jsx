@@ -3,9 +3,11 @@ import React from "react"
 import { CurrentUserContext } from '../context/CurrentUserContext';
 
 export function Card({ card, onCardClick, onCardLike, onCardDelete }) {
+  // console.log(card)
   const currentUser = React.useContext(CurrentUserContext); // Подписываемся на контекст пользователя
-  const isOwn = card.owner._id === currentUser._id; // Определяем, являемся ли мы владельцем текущей карточки
-  const isLiked = card.likes.some(i => i._id === currentUser._id); // Определяем, поставлен ли лайк текущим пользователем
+  const isOwn = card.owner === currentUser._id; // Определяем, являемся ли мы владельцем текущей карточки
+  // const isLiked = card.likes.some(likerId => console.log(likerId)); // Определяем, поставлен ли лайк текущим пользователем
+  const isLiked = card.likes.some(likerId => likerId === currentUser._id); // Определяем, поставлен ли лайк текущим пользователем
 
   function handleClick() { // открытие карточки при нажатии на картиннку
     onCardClick(card);
