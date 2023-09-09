@@ -29,8 +29,6 @@ export function PopupWithForm(props) {
 
 // Лучше деструктурировать пропсы, чтобы не дублировать везде props. в коде: 
 // function PopupWithForm({isOpen, onClose, name, title, buttonText, children}) { 
-
-
 // Если будет интересно, можно добавить универсальную обертку Popup для любых попапов, в которой будет обработка оверлея, крестика и Escape.
 // import { useEffect } from "react";
 // // создаем отдельный компонент `Popup` для обертки любых попапов
@@ -83,15 +81,10 @@ export function PopupWithForm(props) {
 // };
 
 // export default Popup;
-
   
 // И теперь можно использовать в любом компоненте, который является попапом: в  ImagePopup,  InfoTooltip и  PopupWithForm.
-
-
 // function PopupWithForm({isOpen, name, onClose, ...props}) {
 //   return (
 //     <Popup isOpen={isOpen} name={name} onClose={onClose}>
 //         <h2 className='popup__title'>{props.title}</h2>
-
-  
 // И теперь Вам не нужно дублировать верстку обертки попапа, навешивать обработчики оверлея, крестиков и Escape где-то еще. Все будет в одном компоненте Popup. Кстати, можете попробовать сделать компонент Form для любых форм, а так же Input для инпутов.

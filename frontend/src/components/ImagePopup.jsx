@@ -19,23 +19,19 @@ export function ImagePopup({ card, onClose }) { // затем из пропса 
 // export function usePopupClose(isOpen, closePopup) {
 //   useEffect(() => {
 //     if (!isOpen) return; // останавливаем действие эффекта, если попап закрыт
-
 //     const handleOverlay = (event) => {
 //       // если есть `popup_opened` в классах блока, значит, кликнули на оверлей
 //       if (event.target.classList.contains("popup_opened")) {
 //         closePopup();
 //       }
 //     };
-
 //     const handleEscape = (e) => {
 //       if (e.key === "Escape") {
 //         closePopup();
 //       }
 //     };
-
 //     document.addEventListener("keydown", handleEscape);
 //     document.addEventListener("mousedown", handleOverlay);
-
 //     //  обязательно удаляем обработчики в `clean-up`- функции
 //     return () => {
 //       document.removeEventListener("keydown", handleEscape);
@@ -45,11 +41,9 @@ export function ImagePopup({ card, onClose }) { // затем из пропса 
 //   }, [isOpen, closePopup]);
 // }
 
- 
 // Этот код помещают в отдельный файл usePopupClose.js в папке hooks и импортируют хук туда, где нужно.
 // И теперь можно использовать в любом компоненте (попапе), которому нужно установить эти обработчики. 
 // Будет всего лишь одна строчка кода в компоненте PopupWithForm или ImagePopup (InfoTooltip)
 // usePopupClose(isOpen, onClose)
- 
 // Если в  ImagePopup не передаете isOpen,  то определять открытость можно будет по card?.link
 // usePopupClose(card?.link, onClose)

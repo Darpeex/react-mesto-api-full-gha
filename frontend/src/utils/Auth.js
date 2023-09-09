@@ -1,7 +1,7 @@
 // • функция register - принимает почту и пароль, отправляет запрос регистрации на /signup
 import Cookies from 'js-cookie'; // зависимость для взаимодействия с cookie
-export const BASE_URL = 'http://localhost:3000';
-// export const BASE_URL = 'https://api.darpeex.nomoredomainsicu.ru';
+// export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://api.darpeex.nomoredomainsicu.ru';
 
 // Проверка статуса запроса 
   function handleResponse(res) { 
