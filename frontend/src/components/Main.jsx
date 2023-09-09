@@ -6,7 +6,7 @@ import { CardsContext } from '../context/CardsContext';
 
 export function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike, onCardDelete }) {  // Передаются функции открытия попапов из App.js
   const currentUser = React.useContext(CurrentUserContext); // Подписываемся на контекст пользователя, а далее в html передаём данные в соответствующие поля
-  const cards = React.useContext(CardsContext); // Подписываемся на контекст карточек, затем передаём массив карточек и обрабатываем их 
+  const cards = React.useContext(CardsContext); // Подписываемся на контекст карточек, затем передаём массив карточек и обрабатываем их
   return (
     <main className="content">
 
