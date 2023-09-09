@@ -67,6 +67,12 @@ mongoose.connect(BD_URL, { // подключение к mongodb
 // логгер запросов
 app.use(requestLogger);
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 // роуты, не требующие авторизации
 app.post('/signup', signupValidator, createUser); // регистрируемся
 app.post('/signin', signinValidator, login); // заходим под пользователя
