@@ -8,7 +8,7 @@ const NotFoundError = require('../errors/not-found-err'); // 404
 // возвращает все карточки
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.status(200).send(cards)) // успешно, возвращаем карточки
+    .then((cards) => res.status(200).send(cards.reverse())) // успешно, возвращаем карточки
     .catch(next); // переходим в центролизованный обработчик
 };
 

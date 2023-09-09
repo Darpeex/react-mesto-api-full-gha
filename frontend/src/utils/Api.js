@@ -124,8 +124,8 @@ export default Api;
 
 // Класс Api, отвечающий за запросы к серверу
 export const api = new Api ({
-  // url: 'http://localhost:3000',
-  url: 'https://api.darpeex.nomoredomainsicu.ru',
+  url: 'http://localhost:3000',
+  // url: 'https://api.darpeex.nomoredomainsicu.ru',
   headers: {
     'Content-Type': 'application/json'
   }
