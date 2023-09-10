@@ -30,17 +30,17 @@ const errorHandler = require('./middlewares/error-handler');
 
 const app = express(); // cоздаём объект приложения
 
-// const whitelist = [
-//   'https://darpeex.nomoredomainsicu.ru',
-//   'http://darpeex.nomoredomainsicu.ru',
-//   'https://localhost:3000',
-//   'http://localhost:3000',
-//   'https://praktikum.tk',
-//   'http://praktikum.tk',
-// ];
+const whitelist = [
+  'https://darpeex.nomoredomainsicu.ru',
+  'http://darpeex.nomoredomainsicu.ru',
+  'https://localhost:3000',
+  'http://localhost:3000',
+  'https://praktikum.tk',
+  'http://praktikum.tk',
+];
 
 const corsOptions = {
-  origin: '*', // источник домена
+  origin: whitelist, // источник домена
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', // заголовок Authorization
   credentials: true, // обмен учетными данными (cookies)
