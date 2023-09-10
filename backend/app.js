@@ -33,8 +33,8 @@ const app = express(); // cоздаём объект приложения
 const whitelist = [
   'https://darpeex.nomoredomainsicu.ru',
   'http://darpeex.nomoredomainsicu.ru',
-  'https://localhost:3001',
-  'http://localhost:3001',
+  'https://localhost:3000',
+  'http://localhost:3000',
   'https://praktikum.tk',
   'http://praktikum.tk',
 ];
