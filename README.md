@@ -11,6 +11,6 @@
 
 IP 51.250.74.5
 
-Frontend https://darpeex.nomoredomainsicu.ru/
+Frontend https://darpeex.nomoredomainsicu.ru
 
-Backend https://api.darpeex.nomoredomainsicu.ru/
+Backend https://api.darpeex.nomoredomainsicu.ru
