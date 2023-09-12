@@ -42,23 +42,23 @@ module.exports.createUser = (req, res, next) => {
   const { email, password } = req.body; // обязательные поля
   const { name, about, avatar } = req.body; // необязательные
 
-  if (!email || !password) {
-    throw new RequestError('Все поля должны быть заполнены');
-  }
   bcrypt.hash(password, 10, (error, hash) => { // хешируем пароль
-    User.findOne({ email }).select('+password') // добавляем пароль для проверки
-      .then((user) => {
-        if (user) {
-          throw new EmailExistenceError('Даный email уже зарегистрирован');
-        }
-        return User.create({ name, about, avatar, email, password: hash });
-      })
+    if (error) {
+      return next(error); // Обработка ошибки хеширования пароля
+    }
+
+    User.create({ name, about, avatar, email, password: hash })
       .then(() => {
         res
           .status(201)
           .send({ name, about, avatar, email });
       })
-      .catch((err) => next(err)); // переходим в центролизованный обработчие
+      .catch((err) => {
+        if (err.code === 11000) {
+          return next(new EmailExistenceError('Пользователь с данным email уже существует'));
+        }
+        return next(err); // переходим в центролизованный обработчик
+      });
   });
 };
 
