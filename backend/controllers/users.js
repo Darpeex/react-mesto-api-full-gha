@@ -31,7 +31,7 @@ module.exports.getUserById = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') { // если тип ошибки совпадает с 'CastError'
-        next(new RequestError('Некорректный Id пользователя'));
+        return next(new RequestError('Некорректный Id пользователя'));
       }
       return next(err); // иначе, передаём ошибку в централизованный обработчик
     });
@@ -119,7 +119,7 @@ module.exports.getUserInfo = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') { // если тип ошибки совпадает с 'CastError'
-        next(new RequestError('Некорректный Id пользователя'));
+        return next(new RequestError('Некорректный Id пользователя'));
       }
       return next(err); // переходим в центролизованный обработчик
     });

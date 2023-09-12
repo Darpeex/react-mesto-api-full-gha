@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */ // иначе ругается на неиспользованный 'next'
-// спасибо за разбор ПР)
+// спасибо большок за разбор ПР, если даже не пройду сейчас, всего вам самого доброго)
 const errorHandler = (err, req, res, next) => { // здесь обрабатываем все ошибки
   const { statusCode = 500, message } = err;
 
@@ -10,6 +9,7 @@ const errorHandler = (err, req, res, next) => { // здесь обрабатыв
         ? 'На сервере произошла ошибка' // если статус кода 500
         : message, // иначе сообщение пришедшей ошибки
     });
+  return next();
 };
 
 module.exports = errorHandler;

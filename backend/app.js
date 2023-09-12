@@ -87,12 +87,12 @@ app.use(cardRouter);
 // логгер ошибок
 app.use(errorLogger);
 
-// обработчик ошибок celebrate от валидации joi
-app.use(errors());
-
 app.use((req, res, next) => { // предупреждаем переход по отсутсвующему пути
   next(new NotFoundError('Путь не найден'));
 });
+
+// обработчик ошибок celebrate от валидации joi
+app.use(errors());
 
 // централизованный обработчик
 app.use(errorHandler);

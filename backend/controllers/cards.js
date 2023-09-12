@@ -7,8 +7,8 @@ const NotFoundError = require('../errors/not-found-err'); // 404
 
 // возвращает все карточки
 module.exports.getCards = (req, res, next) => {
-  Card.find({})
-    .then((cards) => res.status(200).send(cards.reverse())) // успешно, возвращаем карточки
+  Card.find({}) // status(200) добавляется по дефолту
+    .then((cards) => res.send(cards.reverse())) // успешно - возвращаем карточки
     .catch(next); // переходим в центролизованный обработчик
 };
 
@@ -19,7 +19,7 @@ module.exports.createCard = (req, res, next) => {
     .then((card) => res.status(201).send(card))
     .catch((err) => { // если введённые данные некорректны, передаём сообщение об ошибке и код '400'
       if (err.name === 'ValidationError') {
-        next(new RequestError('Переданы некорректные данные карточки'));
+        return next(new RequestError('Переданы некорректные данные карточки'));
       }
       return next(err); // иначе, передаём ошибку в централизованный обработчик
     });
@@ -43,10 +43,10 @@ module.exports.deleteCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err.message === 'CardNotFound') {
-        next(new NotFoundError('Карточка не найдена'));
+        return next(new NotFoundError('Карточка не найдена'));
       }
       if (err.name === 'CastError') {
-        next(new RequestError('Некорректный Id карточки'));
+        return next(new RequestError('Некорректный Id карточки'));
       }
       return next(err); // передаём ошибку в централизованный обработчик
     });
@@ -67,7 +67,7 @@ module.exports.likeCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new RequestError('Некорректный Id карточки'));
+        return next(new RequestError('Некорректный Id карточки'));
       }
       return next(err); // передаём ошибку в централизованный обработчик
     });
@@ -88,7 +88,7 @@ module.exports.dislikeCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new RequestError('Некорректный Id карточки'));
+        return next(new RequestError('Некорректный Id карточки'));
       }
       return next(err); // передаём ошибку в централизованный обработчик
     });
