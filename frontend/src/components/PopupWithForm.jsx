@@ -43,7 +43,6 @@ export function PopupWithForm(props) {
 //         onClose();
 //       }
 //     }
-
 //     document.addEventListener('keydown', closeByEscape)
 //     // обязательно удаляем обработчик в `clean-up` функции
 //     return () => document.removeEventListener('keydown', closeByEscape)
@@ -56,7 +55,6 @@ export function PopupWithForm(props) {
 //         onClose();
 //     }
 //   }
-
 // // внутри верстка обертки любого попапа с классом `popup` и добавлением `popup_opened`. 
 //   return (
 //     <div
@@ -79,7 +77,6 @@ export function PopupWithForm(props) {
 //     </div>
 //   );
 // };
-
 // export default Popup;
   
 // И теперь можно использовать в любом компоненте, который является попапом: в  ImagePopup,  InfoTooltip и  PopupWithForm.

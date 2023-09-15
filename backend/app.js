@@ -7,6 +7,9 @@ require('dotenv').config(); // модуль для получения данны
 const cookieParser = require('cookie-parser'); // модуль чтения cookie
 const cors = require('cors');
 
+// экземпляр класса с ошибкой
+const NotFoundError = require('./errors/not-found-err'); // 404
+
 // логгер
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -22,15 +25,12 @@ const cardRouter = require('./routes/cards');
 const { signupValidator } = require('./validators/signup-validator');
 const { signinValidator } = require('./validators/signin-validator');
 
-// экземпляр класса с ошибкой
-const NotFoundError = require('./errors/not-found-err'); // 404
-
 // мидлвар для централизованной обработки ошибок
 const errorHandler = require('./middlewares/error-handler');
 
 const app = express(); // cоздаём объект приложения
 
-const whitelist = [
+const whitelist = [ // список разрешенных доменов
   'https://darpeex.nomoredomainsicu.ru',
   'http://darpeex.nomoredomainsicu.ru',
   'https://localhost:3001',
@@ -40,23 +40,20 @@ const whitelist = [
 ];
 
 const corsOptions = {
-  origin: whitelist, // источник домена
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  origin: whitelist, // источник домена (откуда запрос)
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // методы
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', // заголовок Authorization
   credentials: true, // обмен учетными данными (cookies)
 };
 
 app.use(cors(corsOptions)); // доступ для других доменов
-
 app.use(cookieParser()); // парсер для чтения cookie
-
 const { // для успешного прохождения тестов gitHub
   PORT = 3000,
   BD_URL = 'mongodb://localhost:27017/mestodb',
 } = process.env; // свойство для доступа к переменным среды ОС
 
 app.use(helmet()); // использование модуля безопасности
-
 app.use(express.json()); // для сборки JSON-формата
 app.use(express.urlencoded({ extended: true })); // для приёма веб-страниц внутри POST-запроса
 

@@ -10,7 +10,7 @@ export function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onC
   return (
     <main className="content">
 
-    {/* Секция, блок profile */}
+      {/* Секция, блок profile */}
       <section className="profile page__profile-position section">
         <div className="profile__info">
           <div className="profile__avatar">
@@ -25,11 +25,11 @@ export function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onC
         </div>
         <button className="profile__button profile__button_action_add" type="button" onClick={onAddPlace} aria-label="Добавить"></button>
       </section>
-      
+
       {/* Отрисовываем каждую карточку при помощи компонента Card и возвращаем в разметку внутрь section */}
       <section id="elements" className="elements page__elements-position section">
         {cards.map(card => (// Пробегаем по переданному массиву и возвращаем целые карточки при помощи разметки
-        <Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete} /> ))}
+          <Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete} />))}
       </section>
     </main>
   )

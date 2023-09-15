@@ -12,32 +12,32 @@ export const Login = ({ handleLogin, onInfoTooltip, onResult, errorMessage }) =>
   })
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
 
     setFormValue({
       ...formValue,
-      [name]: value
+      [name]: value,
     });
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formValue.email || !formValue.password){
+    if (!formValue.email || !formValue.password) {
       return;
     }
-    auth.login( formValue.password, formValue.email )
+    auth.login(formValue.password, formValue.email)
       .then((data) => {
-          setFormValue({ password: '', email: ''});
-          handleLogin();
-          navigate('/main', {replace: true});
-        }).catch(err => {
-          onResult(false)
-          errorMessage('Токен не найден, зарегистрируйтесь')
-          onInfoTooltip()
-          console.log(err)
-        });      
-  } 
+        setFormValue({ password: '', email: '' });
+        handleLogin();
+        navigate('/main', { replace: true });
+      }).catch(err => {
+        onResult(false)
+        errorMessage('Похоже, вы ещё не зарегистририровались')
+        onInfoTooltip()
+        console.log(err)
+      });
+  }
 
-  return(
+  return (
     <div className="login">
       <p className="login__welcome">Вход</p>
       <form onSubmit={handleSubmit} className="login__form">

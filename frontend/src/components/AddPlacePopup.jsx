@@ -10,7 +10,7 @@ export const AddPlacePopup = ({ onAddPlace, isOpen, onClose }) => { // Пере�
     setName('');
     setLink('');
   }, [isOpen]);
-  
+
   const handleSubmit = (evt) => {
     evt.preventDefault(); // Запрещаем браузеру переходить по адресу формы
     onAddPlace({ name, link }); // Передаём значения управляемых компонентов во внешний обработчик
@@ -21,36 +21,35 @@ export const AddPlacePopup = ({ onAddPlace, isOpen, onClose }) => { // Пере�
   function handleLinkChange(e) { // Следим за изменениями в поле link и подставляем в стейт
     setLink(e.target.value);
   }
-  
-  return( // В строке ниже передаём значения пропсов попапа в общую структуру/компонент попапа PopupWithForm
+
+  return ( // В строке ниже передаём значения пропсов попапа в общую структуру/компонент попапа PopupWithForm
     <PopupWithForm id="addCard" formId="creationForm" title="Новое место" name="creationForm" text="Создать" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit}>
-        <input 
-          name="name"
-          id="name-card"
-          value={name} // значение стейта
-          onChange={handleNameChange} // Функция срабатывает каждый раз, когда в поле ввода вносятся изменения
-          className="popup__form-input popup__form-input_field_nameCard"
-          type="text"
-          placeholder="Название"
-          minLength="2"
-          maxLength="30"
-          required/>
-        <span id="name-card-error" className="popup__form-input-error"></span>
-        <input
-          name="link"
-          id="link"
-          value={link} // значение стейта
-          onChange={handleLinkChange} // Функция срабатывает каждый раз, когда в поле ввода вносятся изменения
-          className="popup__form-input popup__form-input_field_srcImg"
-          placeholder="Ссылка на картинку"
-          type="url"
-          required/>
-        <span id="link-error" className="popup__form-input-error"></span>
+      <input
+        name="name"
+        id="name-card"
+        value={name} // значение стейта
+        onChange={handleNameChange} // Функция срабатывает каждый раз, когда в поле ввода вносятся изменения
+        className="popup__form-input popup__form-input_field_nameCard"
+        type="text"
+        placeholder="Название"
+        minLength="2"
+        maxLength="30"
+        required />
+      <span id="name-card-error" className="popup__form-input-error"></span>
+      <input
+        name="link"
+        id="link"
+        value={link} // значение стейта
+        onChange={handleLinkChange} // Функция срабатывает каждый раз, когда в поле ввода вносятся изменения
+        className="popup__form-input popup__form-input_field_srcImg"
+        placeholder="Ссылка на картинку"
+        type="url"
+        required />
+      <span id="link-error" className="popup__form-input-error"></span>
     </PopupWithForm>
   )
 }
 
-// Можно лучше
 // Можно сделать универсальный кастомный хук для контроля любого количества инпутов в любых формах:
 // export function useForm(inputValues={}) {
 //   const [values, setValues] = useState(inputValues);
@@ -62,4 +61,4 @@ export const AddPlacePopup = ({ onAddPlace, isOpen, onClose }) => { // Пере�
 // }
 // Этот код помещают в отдельный файл useForm.js в папке hooks и импортируют функцию туда, где нужно контролировать инпуты
 // И Вам не нужно будет теперь вручную создавать функции обработки инпутов и т д. Все будет в одной строчке кода:
-//   const {values, handleChange, setValues} = useForm({});
+// const {values, handleChange, setValues} = useForm({});

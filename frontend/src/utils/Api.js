@@ -28,7 +28,7 @@ class Api {
       headers: this.#headers,
       credentials: 'include', // теперь куки посылаются вместе с запросом
     })
-    .then(this.#handleResponse)
+      .then(this.#handleResponse)
   }
 
   // Запрос карточек с сервера
@@ -37,7 +37,7 @@ class Api {
       headers: this.#headers,
       credentials: 'include', // теперь куки посылаются вместе с запросом
     })
-    .then(this.#handleResponse)
+      .then(this.#handleResponse)
   }
 
   // Редактирование профиля
@@ -51,7 +51,7 @@ class Api {
         about: description // о себе
       })
     })
-    .then(this.#handleResponse)
+      .then(this.#handleResponse)
   }
 
   // Добавление новой карточки
@@ -62,7 +62,7 @@ class Api {
       credentials: 'include', // теперь куки посылаются вместе с запросом
       body: JSON.stringify(data) // name: data.name, link: data.link
     })
-    .then(this.#handleResponse)
+      .then(this.#handleResponse)
   }
 
   // Удаление карточки
@@ -72,7 +72,7 @@ class Api {
       credentials: 'include', // теперь куки посылаются вместе с запросом
       headers: this.#headers
     })
-    .then(this.#handleResponse)
+      .then(this.#handleResponse)
   }
 
   // Запрос на добавление лайка
@@ -82,7 +82,7 @@ class Api {
       headers: this.#headers,
       credentials: 'include', // теперь куки посылаются вместе с запросом
     })
-    .then(this.#handleResponse)
+      .then(this.#handleResponse)
   }
 
   // Запрос на удаление лайка
@@ -92,9 +92,9 @@ class Api {
       headers: this.#headers,
       credentials: 'include', // теперь куки посылаются вместе с запросом
     })
-    .then(this.#handleResponse)
+      .then(this.#handleResponse)
   }
-  
+
   // Обновление аватара пользователя
   editAvatar(data) {
     return fetch(`${this.#url}/users/me/avatar`, {
@@ -105,17 +105,17 @@ class Api {
         avatar: data.avatar,
       })
     })
-    .then(this.#handleResponse)
+      .then(this.#handleResponse)
   }
 
   // Если isLiked = true - запрос на удаление, если false - постановка лайка
   changeLikeCardStatus(id, isLiked) {
     const method = isLiked ? 'PUT' : 'DELETE';
-      return fetch(`${this.#url}/cards/${id}/likes`, {
-        method: method,
-        headers: this.#headers,
-        credentials: 'include', // теперь куки посылаются вместе с запросом
-      })
+    return fetch(`${this.#url}/cards/${id}/likes`, {
+      method: method,
+      headers: this.#headers,
+      credentials: 'include', // теперь куки посылаются вместе с запросом
+    })
       .then(this.#handleResponse)
   }
 }
@@ -123,7 +123,7 @@ class Api {
 export default Api;
 
 // Класс Api, отвечающий за запросы к серверу
-export const api = new Api ({
+export const api = new Api({
   // url: 'http://localhost:3000',
   url: 'https://api.darpeex.nomoredomainsicu.ru',
   headers: {

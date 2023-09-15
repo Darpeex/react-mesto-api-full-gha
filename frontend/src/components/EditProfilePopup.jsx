@@ -8,7 +8,7 @@ export const EditProfilePopup = ({ onUpdateUser, isOpen, onClose }) => { // Пе
   const [name, setName] = React.useState(''); // Состояние имени
   const [description, setDescription] = React.useState(''); // Состояние описания
 
-// После загрузки текущего пользователя из API его данные будут использованы в управляемых компонентах.
+  // После загрузки текущего пользователя из API его данные будут использованы в управляемых компонентах.
   React.useEffect(() => {
     setName(currentUser.name ?? ''); // Если имя не успело прийти с сервера - поле пустое
     setDescription(currentUser.about ?? ''); // Если описание не успело прийти с сервера - поле пустое
@@ -25,7 +25,7 @@ export const EditProfilePopup = ({ onUpdateUser, isOpen, onClose }) => { // Пе
     setDescription(e.target.value);
   }
 
-  return( // В строке ниже передаём значения пропсов попапа в общую структуру/компонент попапа PopupWithForm
+  return ( // В строке ниже передаём значения пропсов попапа в общую структуру/компонент попапа PopupWithForm
     <PopupWithForm id="editProfile" formId="editProfileForm" title="Редактировать профиль" name="editForm" text="Сохранить" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit}>
       <input
         name="name"
@@ -37,19 +37,19 @@ export const EditProfilePopup = ({ onUpdateUser, isOpen, onClose }) => { // Пе
         placeholder="Имя"
         minLength="2"
         maxLength="40"
-        required/>
+        required />
       <span id="user-name-error" className="popup__form-input-error"></span>
       <input
         name="about"
         value={description} // значение поля из стейта
         onChange={handleDescriptionChange} // Срабатывает каждый раз, когда в поле ввода вносятся изменения
-        id = "about"
+        id="about"
         className="popup__form-input popup__form-input_field_activity"
         type="text"
         placeholder="О себе"
         minLength="2"
         maxLength="200"
-        required/>
+        required />
       <span id="about-error" className="popup__form-input-error"></span>
     </PopupWithForm>
   )

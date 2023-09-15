@@ -3,7 +3,7 @@ import successfully from "../images/successfully.svg"
 import unsuccessfully from "../images/unsuccessfully.svg"
 
 export const InfoTooltip = ({ isOpen, onClose, result, error }) => {
-// Проверка целевого элемента. Если целевой элемент события является самим оверлеем попапа (event.target === event.currentTarget), то вызывается функция props.onClose, закрывающая попап.
+  // Проверка целевого элемента. Если целевой элемент события является самим оверлеем попапа (event.target === event.currentTarget), то вызывается функция props.onClose, закрывающая попап.
   function handleOverlayMouseDown(event) {
     if (event.target === event.currentTarget) {
       onClose();
