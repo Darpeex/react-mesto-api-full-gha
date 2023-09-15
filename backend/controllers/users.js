@@ -41,17 +41,18 @@ module.exports.getUserById = (req, res, next) => {
 module.exports.createUser = (req, res, next) => {
   const { email, password } = req.body; // обязательные поля
   const { name, about, avatar } = req.body; // необязательные
+  const emailLowerCase = email.toLowerCase(); // приводим email к нижнему регистру
 
   bcrypt.hash(password, 10, (error, hash) => { // хешируем пароль
     if (error) {
       return next(error); // Обработка ошибки хеширования пароля
     }
 
-    User.create({ name, about, avatar, email, password: hash })
+    User.create({ name, about, avatar, email: emailLowerCase, password: hash }) // создаём в БД
       .then(() => {
         res
           .status(201)
-          .send({ name, about, avatar, email });
+          .send({ name, about, avatar, email: emailLowerCase }); // отправляем ответ
       })
       .catch((err) => {
         if (err.code === 11000) {
